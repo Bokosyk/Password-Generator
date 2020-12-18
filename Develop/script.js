@@ -17,11 +17,12 @@ function generatePassword() {
 function getPasswordOptions() {
 
   confirm("Minimum characters for password is 8.");
-  var length = parseInt(prompt("Please enter password desired: "));
+  var length = parseInt(prompt("Please enter password character length desired."));
 
   if (length >= 8 && length <= 128) {
     var hasSpecialCharacters = confirm("Click ok to confirm special characters.");
-
+    const symbols = "!@#$%^&*/\<>[]{}.,";
+    
     //I have set the limit to 26 - the number of letters in the alphabet.
     //Math.floor will round down to whole numbers.
     var random = math.floor(Math.random() * 26);
@@ -32,12 +33,19 @@ function getPasswordOptions() {
   else {
     confirm("Invalid number of characters.");
   }
+
+
 }
 
 // Conditional statement to ensure user input
 
 //Check password length
 
-// var hasSpecialCharacters() = confirm()
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
+
+// const length = +lengthEl.value;
+// const hasLower = lowercaseEl.checked;
+// const hasUpper = uppercaseEl.checked;
+// const hasNumber = numbersEl.checked;
+// const hasSymbol = symbolsEl.checked;
