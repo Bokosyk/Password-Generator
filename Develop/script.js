@@ -9,34 +9,35 @@ function writePassword() {
   passwordText.value = password;
 }
 
-  function generatePassword() {
-    var options = getPasswordOptions();
+function generatePassword() {
+  var options = getPasswordOptions();
+}
+
+// Retrieves password
+function getPasswordOptions() {
+
+  confirm("Minimum characters for password is 8.");
+  var length = parseInt(prompt("Please enter password desired: "));
+
+  if (length >= 8 && length <= 128) {
+    var hasSpecialCharacters = confirm("Click ok to confirm special characters.");
+
+    //I have set the limit to 26 - the number of letters in the alphabet.
+    //Math.floor will round down to whole numbers.
+    var random = math.floor(Math.random() * 26);
+
+    return hasSpecialCharacters[random];
   }
 
-  // Retrieves password
-  function getPasswordOptions() {
-
-    confirm("Minimum characters for password is 8.");
-    var length = parseInt(prompt("Please enter password desired: "));
-
-    if length >= 8 && length <= 128 {
-      var hasSpecialCharacters = confirm("Click ok to confirm special characters.");
-
-      //I have set the limit to 26 - the number of letters in the alphabet.
-      var random = math.floor(Math.random() * 26);
-
-      return hasSpecialCharacters[random];
-    }
-
-    else {
-      confirm("Invalid number of characters.");
-    }
+  else {
+    confirm("Invalid number of characters.");
   }
+}
 
-  // Conditional statement to ensure user input
+// Conditional statement to ensure user input
 
-  //Check password length
+//Check password length
 
-  var hasSpecialCharacters() = confirm()
+// var hasSpecialCharacters() = confirm()
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
