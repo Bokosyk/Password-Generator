@@ -22,7 +22,8 @@ function writePassword() {
     if length >= 8 && length <= 128 {
       var hasSpecialCharacters = confirm("Click ok to confirm special characters.");
 
-      var random = math.floor(Math.random() * length);
+      //I have set the limit to 26 - the number of letters in the alphabet.
+      var random = math.floor(Math.random() * 26);
 
       return hasSpecialCharacters[random];
     }
