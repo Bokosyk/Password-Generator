@@ -14,11 +14,11 @@ var lowerCasedCharacters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k
 var upperCasedCharacters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
 
 var answer = [];
-var passwordLength;
-var specialChosen;
-var lowerChosen;
-var upperChosen;
-var numericChosen;
+var passwordLength = 0;
+var specialChosen = false;
+var lowerChosen = false;
+var upperChosen = false;
+var numericChosen = false;
 var characterPool = [];
 
 var arrayPlaceholder;
@@ -36,7 +36,7 @@ function writePassword() {
   passwordText.value = password;
 }
 
-function generatePassword() {
+function generatePassword_old() {
   var options = getPasswordOptions();
   //Options isn't returning what I want. Undefined.
 
@@ -47,14 +47,65 @@ function generatePassword() {
 
 }
 
-function generatePassword_pairCoding() {
+function generatePassword() {
+  passwordLength = 10;
+  specialChosen = true;
+  numericChosen = true;
+  lowerChosen = true;
+  upperChosen = true;
+
+
+
+
+
   // add selected characters to character pool 
-  // if user selects special characters add special characters to character pool  
+  // if user selects special characters add special characters to character pool 
+  if(specialChosen){
+    characterPool = characterPool.concat(specialCharacters);
+  } 
   // if user selects numeric characters add numeric characters to character pool
+  if(numericChosen){
+    characterPool = characterPool.concat(numericCharacters);
+  } 
   // if user selects lowercase characters add lowercase characters to character pool
+  if(lowerChosen){
+    characterPool = characterPool.concat(lowerCasedCharacters);
+  }
   // if user selects uppercase characters add uppercase characters to character pool
+  if(upperChosen){
+    characterPool = characterPool.concat(upperCasedCharacters);
+  }
+  console.log("Character pool: " + characterPool);
+
+
   // to generate each character in the password select characters from character pool at random indexes
-  // verifying password and try again if validation fails, return password otherwise
+  let generatedCandidate = '';
+  for(var i = 0; i < passwordLength; i++){
+    // generate random index
+    let randomIndex = Math.floor(Math.random() * characterPool.length);
+    // add random character to generated password
+    generatedCandidate += characterPool[randomIndex];
+  }
+
+
+
+  console.log("Generated password: " + generatedCandidate);  
+  alert("Generated password: " + generatedCandidate);
+  return generatedCandidate;
+
+  // let isCandidateValid = false;
+  // // verifying password and try again if validation fails, return password otherwise
+  // if(specialChosen){
+  //   // make sure that the candidate has at least one special char
+  // } 
+  // // if user selects numeric characters add numeric characters to character pool
+  // if(numericChosen){
+  //   // make sure that the candidate has at least one numeric char
+  // } 
+
+  // // recursively try again if candidate failed validation
+  // if (!isCandidateValid) { return generatePasswords(); }
+  // else{  return generatedCandidate(); }
 }
 
 // Retrieves password
@@ -78,3 +129,4 @@ function getPasswordOptions() {
 }
 
 generateBtn.addEventListener("click", writePassword);
+
