@@ -14,12 +14,16 @@ var lowerCasedCharacters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k
 var upperCasedCharacters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
 
 var answer = [];
+var passwordLength;
 var specialChosen;
 var lowerChosen;
 var upperChosen;
 var numericChosen;
+var characterPool = [];
 
 var arrayPlaceholder;
+
+
 
 
 // Write password to the #password input
@@ -43,6 +47,16 @@ function generatePassword() {
 
 }
 
+function generatePassword_pairCoding() {
+  // add selected characters to character pool 
+  // if user selects special characters add special characters to character pool  
+  // if user selects numeric characters add numeric characters to character pool
+  // if user selects lowercase characters add lowercase characters to character pool
+  // if user selects uppercase characters add uppercase characters to character pool
+  // to generate each character in the password select characters from character pool at random indexes
+  // verifying password and try again if validation fails, return password otherwise
+}
+
 // Retrieves password
 function getPasswordOptions() {
 
@@ -52,7 +66,7 @@ function getPasswordOptions() {
   }
 
   else if (quantity < 8 || quantity > 128) {
-    alert("Input based on the parameters given.")
+    alert("Invalid amount of characters. 8 mini, 128 max.")
   }
 
   else {
