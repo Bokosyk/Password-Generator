@@ -28,12 +28,18 @@ var arrayPlaceholder;
 
 // Write password to the #password input
 function writePassword() {
-  var password = generatePassword();
-  var passwordText = document.querySelector("#password");
-  //Pushes the password. There's no password.text value.
-  console.log(passwordText);
-  console.log(passwordText.value)
-  passwordText.value = password;
+  let areRequirementsValid = getPasswordOptions();
+  if(areRequirementsValid){
+    var password = generatePassword();
+    var passwordText = document.querySelector("#password");
+    //Pushes the password. There's no password.text value.
+    console.log(passwordText);
+    console.log(passwordText.value)
+    passwordText.value = password;
+    
+  } else {
+    alert("Invalid requirements, please try again.");
+  }
 }
 
 function generatePassword_old() {
@@ -48,16 +54,7 @@ function generatePassword_old() {
 }
 
 function generatePassword() {
-  passwordLength = 10;
-  specialChosen = true;
-  numericChosen = true;
-  lowerChosen = true;
-  upperChosen = true;
-
-
-
-
-
+  
   // add selected characters to character pool 
   // if user selects special characters add special characters to character pool 
   if(specialChosen){
@@ -111,21 +108,23 @@ function generatePassword() {
 // Retrieves password
 function getPasswordOptions() {
 
-  var quantity = parseInt(prompt("Minimum characters for password is 8. Please enter desired."));
-  if (!quantity) {
+  passwordLength = parseInt(prompt("Minimum characters for password is 8. Please enter desired."));
+
+  // Message that shows up when user has made no input.
+  if (!passwordLength) { 
     alert("Input required.");
-  }
+    return false;
 
-  else if (quantity < 8 || quantity > 128) {
-    alert("Invalid amount of characters. 8 mini, 128 max.")
-  }
-
-  else {
-    specialSelected = confirm("Will this contain special characters?");
-    upperSelected = confirm("Will this contain uppercase letters?");
-    lowerSelected = confirm("Will this contain lowercase letters?");
-    numericSelected = confirm("Will this contain numbers?");
-  };
+  } else if (passwordLength < 8 || passwordLength > 128) { // Input out of range.
+    alert("Invalid amount of characters. 8 min, 128 max.")
+    return false;
+  } 
+  // Get character types
+  specialChosen = confirm("Will this contain special characters?");
+  upperChosen = confirm("Will this contain uppercase letters?");
+  lowerChosen = confirm("Will this contain lowercase letters?");
+  numericChosen = confirm("Will this contain numbers?");
+  return true;
 }
 
 generateBtn.addEventListener("click", writePassword);
