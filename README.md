@@ -3,6 +3,6 @@ A password generator run on Javascript that allows the user to choose the length
 Minimum length of the password is 8 and cannot exceed 128 characters.
 User input and at least one character is required for the generator to run.
 
-![Screenshot of finished web page.]("C:\Users\lparr\OneDrive\Documents\UCF\Homework\Password-Generator\Assets\Screenshot (75).png")
+![Screenshot of finished web page.]("Assets\Screenshot (75).png")
 
 Link: https://bokosyk.github.io/Password-Generator/
